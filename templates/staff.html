@@ -8,36 +8,40 @@
 <div class="container">
 
     <div class="navbar">
-        <h2>👮 Staff Management</h2>
-        <a href="/">Home</a>
+        <h2>👥 Personnel Management</h2>
+        <a href="/">Dashboard</a>
     </div>
 
     <a href="/add" class="btn btn-add">➕ Add Staff</a>
 
     <div class="table-container">
         <table>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Rank</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Action</th>
-            </tr>
-
-            {% for s in staff %}
-            <tr>
-                <td>{{ s[0] }}</td>
-                <td>{{ s[1] }}</td>
-                <td>{{ s[2] }}</td>
-                <td>{{ s[3] }}</td>
-                <td>{{ s[4] }}</td>
-                <td>
-                    <a href="/edit/{{ s[0] }}">Edit</a> | 
-                    <a href="/delete/{{ s[0] }}">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Rank</th>
+                    <th>Contact Info</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in staff %}
+                <tr>
+                    <td><span style="font-weight:700; color:var(--secondary)">#{{ s[0] }}</span></td>
+                    <td><strong>{{ s[1] }}</strong></td>
+                    <td>{{ s[2] }}</td>
+                    <td>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">📧 {{ s[3] }}</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">📱 {{ s[4] }}</div>
+                    </td>
+                    <td>
+                        <a href="/edit/{{ s[0] }}" class="btn" style="padding: 6px 12px; font-size: 0.8rem; background: #fff;">Edit</a>
+                        <a href="/delete/{{ s[0] }}" class="btn" style="padding: 6px 12px; font-size: 0.8rem; background: #ffebee; color: #c62828;">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
     </div>
 

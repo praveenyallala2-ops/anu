@@ -7,19 +7,43 @@
 <body>
 <div class="container">
 
-<div class="navbar">
-<h2>Automated Police Duty Roster System</h2>
+    <div class="navbar">
+        <h2>👮 Police Roster Admin</h2>
+        <div>
+            <a href="/staff">Personnel</a>
+            <a href="/duty">Roster</a>
+        </div>
+    </div>
 
-</div>
+    <h1>Welcome, Commander</h1>
+    <p style="text-align:center; color: var(--text-muted); margin-top: 10px;">Automated Police Duty Management System</p>
 
-<h1>Dashboard</h1>
-
-<div class="card-grid">
-<div class="card"><h3>👥 Staff</h3><p>Manage personnel</p><a class="btn" href="/staff">Open</a></div>
-<div class="card"><h3>⚙ Duty</h3><p>Generate schedule</p><a class="btn" href="/generate">Run</a></div>
-<div class="card"><h3>📊 View</h3><p>Check duty list</p><a class="btn" href="/duty">View</a></div>
-<div class="card"><h3>📄 Export</h3><p>Download PDF</p><a class="btn" href="/download_pdf">Download</a></div>
-</div>
+    <div class="card-grid">
+        <div class="card">
+            <h3 style="font-size: 2.5rem;">👥</h3>
+            <h3>Personnel</h3>
+            <p>Manage and update your staff records</p>
+            <a class="btn" href="/staff">Configure</a>
+        </div>
+        <div class="card">
+            <h3 style="font-size: 2.5rem;">⚡</h3>
+            <h3>Generator</h3>
+            <p>Automatically assign daily shifts</p>
+            <a class="btn" href="/generate">Run Now</a>
+        </div>
+        <div class="card">
+            <h3 style="font-size: 2.5rem;">📊</h3>
+            <h3>Live Roster</h3>
+            <p>View current duty assignments</p>
+            <a class="btn" href="/duty">View Table</a>
+        </div>
+        <div class="card">
+            <h3 style="font-size: 2.5rem;">📥</h3>
+            <h3>Reports</h3>
+            <p>Download duty chart as PDF</p>
+            <a class="btn" href="/download_pdf">Export</a>
+        </div>
+    </div>
 
 </div>
 </body>

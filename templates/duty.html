@@ -12,19 +12,28 @@
 <a href="/">Home</a>
 </div>
 
-<div class="table-box">
-<table>
-<tr><th>Name</th><th>Rank</th><th>Shift</th><th>Date</th></tr>
-{% for d in duty %}
-<tr>
-<td>{{ d[1] }}</td>
-<td>{{ d[2] }}</td>
-<td class="{% if d[3]=='Morning' %}morning{% elif d[3]=='Evening' %}evening{% else %}night{% endif %}">{{ d[3] }}</td>
-<td>{{ d[4] }}</td>
-</tr>
-{% endfor %}
-</table>
-</div>
+    <div class="table-box">
+        <table>
+            <thead>
+                <tr>
+                    <th>Officer</th>
+                    <th>Rank</th>
+                    <th>Assigned Shift</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in duty %}
+                <tr>
+                    <td><strong>{{ d[1] }}</strong></td>
+                    <td>{{ d[2] }}</td>
+                    <td><span class="{% if d[3]=='Morning' %}morning{% elif d[3]=='Evening' %}evening{% else %}night{% endif %}">{{ d[3] }}</span></td>
+                    <td>{{ d[4] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 </div>
 </body>
