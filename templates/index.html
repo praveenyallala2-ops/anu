@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Police Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+
+<div class="navbar">
+<h2>Automated Police Duty Roster System</h2>
+
+</div>
+
+<h1>Dashboard</h1>
+
+<div class="card-grid">
+<div class="card"><h3>👥 Staff</h3><p>Manage personnel</p><a class="btn" href="/staff">Open</a></div>
+<div class="card"><h3>⚙ Duty</h3><p>Generate schedule</p><a class="btn" href="/generate">Run</a></div>
+<div class="card"><h3>📊 View</h3><p>Check duty list</p><a class="btn" href="/duty">View</a></div>
+<div class="card"><h3>📄 Export</h3><p>Download PDF</p><a class="btn" href="/download_pdf">Download</a></div>
+</div>
+
+</div>
+</body>
+</html>

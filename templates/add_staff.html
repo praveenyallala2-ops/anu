@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Staff</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+
+    <h1>Add Police Staff</h1>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Enter Name" required>
+        <input type="email" name="email" placeholder="Enter Email" required>
+        <input type="text" name="phone" placeholder="Enter Phone Number" required>
+
+        <select name="rank">
+            <option>Inspector (SHO)</option>
+            <option>Sub-Inspector (SI)</option>
+            <option>Assistant Sub-Inspector (ASI)</option>
+            <option>Head Constable (HC)</option>
+            <option>Constable</option>
+            <option>Woman Constable</option>
+            <option>Home Guard</option>
+        </select>
+
+        <button type="submit">Add Staff</button>
+    </form>
+
+    <a href="/" class="btn btn-back">⬅ Back</a>
+
+</div>
+</body>
+</html>

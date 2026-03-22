@@ -1,0 +1,13 @@
+__pycache__/
+*.db
+*.pyc
+.tempmediaStorage/
+.system_generated/
+browser/
+task.md*
+walkthrough.md
+implementation_plan.md
+project_overview.md
+hthon.zip
+temp_extracted/
+~$stract.docx

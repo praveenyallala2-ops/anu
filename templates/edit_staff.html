@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Staff</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+
+    <h1>Edit Police Staff</h1>
+
+    <form method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" value="{{ staff[1] }}" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" value="{{ staff[3] }}" required>
+
+        <label>Phone:</label>
+        <input type="text" name="phone" value="{{ staff[4] }}" required>
+
+        <label>Rank:</label>
+        <select name="rank">
+            <option {% if staff[2] == 'Inspector (SHO)' %}selected{% endif %}>Inspector (SHO)</option>
+            <option {% if staff[2] == 'Sub-Inspector (SI)' %}selected{% endif %}>Sub-Inspector (SI)</option>
+            <option {% if staff[2] == 'Assistant Sub-Inspector (ASI)' %}selected{% endif %}>Assistant Sub-Inspector (ASI)</option>
+            <option {% if staff[2] == 'Head Constable (HC)' %}selected{% endif %}>Head Constable (HC)</option>
+            <option {% if staff[2] == 'Constable' %}selected{% endif %}>Constable</option>
+            <option {% if staff[2] == 'Woman Constable' %}selected{% endif %}>Woman Constable</option>
+            <option {% if staff[2] == 'Home Guard' %}selected{% endif %}>Home Guard</option>
+        </select>
+
+        <button type="submit">Update Staff</button>
+    </form>
+
+    <a href="/staff" class="btn btn-back">⬅ Back</a>
+
+</div>
+</body>
+</html>
