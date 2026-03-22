@@ -104,6 +104,13 @@ def delete(id):
     
     return redirect('/staff')
 
+@app.route('/generating')
+def generating():
+    conn = sqlite3.connect('database.db')
+    staff = conn.execute("SELECT name FROM staff").fetchall()
+    conn.close()
+    return render_template('generating.html', staff=[s[0] for s in staff])
+
 # ---------------- DUTY GENERATION ----------------
 @app.route('/generate')
 def generate():
@@ -126,7 +133,7 @@ def generate():
     conn.commit()
     conn.close()
 
-    return redirect('/')
+    return redirect('/duty')
 
 # ---------------- DOWNLOAD PDF ----------------
 @app.route('/download_pdf')
@@ -155,7 +162,13 @@ def download_pdf():
 @app.route('/duty')
 def duty():
     conn = sqlite3.connect('database.db')
-    data = conn.execute("SELECT * FROM duty").fetchall()
+    # Join with staff table to get contact details
+    query = """
+    SELECT d.id, d.staff_name, d.rank, d.shift, d.date, s.email, s.phone 
+    FROM duty d 
+    LEFT JOIN staff s ON d.staff_name = s.name
+    """
+    data = conn.execute(query).fetchall()
     conn.close()
     return render_template('duty.html', duty=data)
 # ---------------- RUN ----------------

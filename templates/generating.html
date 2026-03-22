@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generating Duty Roster</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .gen-container {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .status-box {
+            margin-top: 40px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--clay-shadow);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: 200px;
+        }
+        .log-item {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 12px;
+            background: #f8fafc;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: 0.5s;
+            text-align: left;
+            font-size: 0.9rem;
+            border-left: 4px solid var(--primary);
+        }
+        .log-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scanner {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            position: relative;
+            margin-top: 20px;
+            animation: scan 2s linear infinite;
+        }
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container gen-container">
+        <h1>🛠️ Generating Assignments</h1>
+        <p>Advanced Duty Roster Algorithm in Progress...</p>
+        
+        <div class="status-box">
+            <div id="logs"></div>
+            <div class="scanner"></div>
+        </div>
+    </div>
+
+    <script>
+        const staff = {{ staff | tojson }};
+        const logsContainer = document.getElementById('logs');
+        
+        const logs = [
+            "Initializing secure connection to personnel database...",
+            "Analyzing officer rest periods and history...",
+            "Checking Rank: Inspector (SHO) availability...",
+            ...staff.map(name => `Calculating optimal shift for Officer: ${name}...`),
+            "Balancing Morning, Evening, and Night shifts...",
+            "Encrypting roster and saving to secure storage...",
+            "Finalizing duty chart..."
+        ];
+
+        let logIndex = 0;
+        function addLog() {
+            if (logIndex < logs.length) {
+                const item = document.createElement('div');
+                item.className = 'log-item';
+                item.innerText = `> ${logs[logIndex]}`;
+                logsContainer.prepend(item);
+                
+                // Show only last 5 logs for cleanliness
+                if (logsContainer.children.length > 5) {
+                    logsContainer.lastChild.remove();
+                }
+
+                setTimeout(() => item.classList.add('visible'), 50);
+                logIndex++;
+                
+                // Varied timing for realism
+                const nextTime = logIndex < 5 ? 800 : (logIndex > logs.length - 3 ? 1200 : 400);
+                setTimeout(addLog, nextTime);
+            } else {
+                setTimeout(() => {
+                    window.location.href = "/generate";
+                }, 1000);
+            }
+        }
+
+        setTimeout(addLog, 1000);
+    </script>
+</body>
+</html>

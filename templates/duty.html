@@ -18,6 +18,7 @@
                 <tr>
                     <th>Officer</th>
                     <th>Rank</th>
+                    <th>Contact Info</th>
                     <th>Assigned Shift</th>
                     <th>Date</th>
                 </tr>
@@ -27,6 +28,10 @@
                 <tr>
                     <td><strong>{{ d[1] }}</strong></td>
                     <td>{{ d[2] }}</td>
+                    <td>
+                        <div style="font-size: 0.8rem;">📧 {{ d[5] }}</div>
+                        <div style="font-size: 0.8rem;">📱 {{ d[6] }}</div>
+                    </td>
                     <td><span class="{% if d[3]=='Morning' %}morning{% elif d[3]=='Evening' %}evening{% else %}night{% endif %}">{{ d[3] }}</span></td>
                     <td>{{ d[4] }}</td>
                 </tr>
